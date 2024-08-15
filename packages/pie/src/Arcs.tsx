@@ -48,12 +48,12 @@ export const Arcs = <RawDatum,>({
     const { showTooltipFromEvent, hideTooltip } = useTooltip()
 
     const handleFocus = useMemo(() => {
-        if (!(isFocusable && isFocusable)) return undefined
+        if (!(isInteractive && isFocusable)) return undefined
 
         return (datum: ComputedDatum<RawDatum>, event: React.FocusEvent<SVGPathElement>) => {
             onFocus?.(datum, event)
         }
-    }, [isFocusable, isFocusable , onFocus])
+    }, [isInteractive, isFocusable, onFocus])
 
     const handleBlur = useMemo(() => {
         if (!(isInteractive && isFocusable)) return undefined
@@ -61,7 +61,7 @@ export const Arcs = <RawDatum,>({
         return (datum: ComputedDatum<RawDatum>, event: React.FocusEvent<SVGPathElement>) => {
             onBlur?.(datum, event)
         }
-    }, [isInteractive, isFocusable , onBlur])
+    }, [isInteractive, isFocusable, onBlur])
 
     const handleClick = useMemo(() => {
         if (!isInteractive) return undefined
